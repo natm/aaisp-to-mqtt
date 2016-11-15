@@ -6,6 +6,8 @@ It uses version 2 of AAISPs [CHAOS](https://support.aa.net.uk/CHAOS) API.
 
 Useful for integrating and displaying AAISP line properties in home automation applications, such as [Home Assistant](https://home-assistant.io/) or [openHAB](http://www.openhab.org/).
 
+![Workflow](https://raw.github.com/natm/aaisp-to-mqtt/master/docs/workflow.png)
+
 ## Usage ##
 
 Create a config file, for example in /etc/aaisp-mqtt.conf, minimal viable with no MQTT authentication:

@@ -8,7 +8,14 @@ Useful for integrating and displaying AAISP line properties in home automation a
 
 ![Workflow](https://raw.github.com/natm/aaisp-to-mqtt/master/docs/workflow.png)
 
-## Usage ##
+## Use cases ##
+
+* Displaying line properties in Home Assistant / openHAB
+* Asking Amazon Alexa Echo for the remaining quota
+* Flashing a light in the office when the downstream sync rate drops
+* Sending line info to [Crouton](https://github.com/edfungus/Crouton)
+
+## Configuration ##
 
 Create a config file, for example in /etc/aaisp-mqtt.conf, minimal viable with no MQTT authentication:
 

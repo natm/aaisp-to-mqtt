@@ -57,6 +57,22 @@ Run the service:
 $ aaisp-to-mqtt.py /etc/aaisp-mqtt.conf
 ```
 
+It will display debug output similar to:
+
+```
+INFO [2016-11-16 01:24:07,069] Connecting to AAISP CHAOSv2 endpoint
+INFO [2016-11-16 01:24:07,338] Got 3 circuits
+INFO [2016-11-16 01:24:07,338] * Lines: 32891, 37835, 37964
+INFO [2016-11-16 01:24:07,338] * Logins: gb12@a.1, el6@a.1, el6@a.2
+INFO [2016-11-16 01:24:07,339] Connecting to MQTT broker mqtt.gorras.hw.esgob.com:1883
+INFO [2016-11-16 01:24:07,345] Connected OK to MQTT
+INFO [2016-11-16 01:24:07,346] Published version and index messages
+INFO [2016-11-16 01:24:07,350] Published details for 3 circuits
+INFO [2016-11-16 01:24:07,350] Disconnecting from MQTT
+```
+
+Schedule the script via a crontab to run every hour or 30 minutes.
+
 ## Topics ##
 
 Single account:

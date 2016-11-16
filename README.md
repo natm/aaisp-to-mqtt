@@ -19,6 +19,8 @@ Example showing lines in Home Assistant...
 
 ![Screenshot](https://raw.github.com/natm/aaisp-to-mqtt/master/docs/home-assistant-panel.png)
 
+![Screenshot](https://raw.github.com/natm/aaisp-to-mqtt/master/docs/home-assistant-quota-graph.png)
+
 ## Configuration ##
 
 Create a config file, for example in /etc/aaisp-mqtt.conf, minimal viable with no MQTT authentication:

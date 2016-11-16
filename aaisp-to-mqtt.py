@@ -4,6 +4,7 @@ import sys
 import logging
 import json
 import urllib
+import time
 import configparser
 import paho.mqtt.client as mqtt
 import humanfriendly
@@ -69,6 +70,7 @@ def main():
     # do auth?
     if mqtt_username is not None and mqtt_password is not None:
         client.username_pw_set(mqtt_username, mqtt_password)
+    client.max_inflight_messages_set(100)
     client.connect(mqtt_broker, mqtt_port, 60)
     LOG.info("Connected OK to MQTT")
 
@@ -97,7 +99,7 @@ def publish_per_circuit(client, circuit, mqtt_topic_prefix):
     up = float(circuit["rx_rate"])
     up_mb = round(up / 1000000, 2)
     down = float(circuit["tx_rate"])
-    down_mb = round(up / 1000000, 2)
+    down_mb = round(down / 1000000, 2)
 
     # line_prefix = "%s/line/%s" % (mqtt_topic_prefix, circuit["ID"])
     login_prefix = "%s/login/%s" % (mqtt_topic_prefix, circuit["login"])
@@ -122,6 +124,7 @@ def publish_per_circuit(client, circuit, mqtt_topic_prefix):
     return
 
 def publish(client, topic, payload):
+    time.sleep(0.1)
     result = client.publish(topic=topic, payload=payload, qos=1)
     if result[0] != 0:
         LOG.fail("MQTT publish failure: %s %s" , topic, payload)

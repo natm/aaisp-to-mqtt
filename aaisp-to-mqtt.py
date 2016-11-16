@@ -90,20 +90,35 @@ def main():
     sys.exit(0)
 
 def publish_per_circuit(client, circuit, mqtt_topic_prefix):
+    quota_remaining = int(circuit["quota_remaining"])
+    quota_remaining_gb = quota_remaining / 1000000000
+    quota_monthly = int(circuit["quota_monthly"])
+    quota_monthly_gb = quota_monthly / 1000000000
+    up = float(circuit["rx_rate"])
+    up_mb = round(up / 1000000, 2)
+    down = float(circuit["tx_rate"])
+    down_mb = round(up / 1000000, 2)
+
     # line_prefix = "%s/line/%s" % (mqtt_topic_prefix, circuit["ID"])
     login_prefix = "%s/login/%s" % (mqtt_topic_prefix, circuit["login"])
     for prefix in [login_prefix]:  # , line_prefix]:
         for metric in [
-            ("quota/remaining", int(circuit["quota_remaining"])),
-            ("quota/monthly", int(circuit["quota_monthly"])),
-            ("syncrate/up", int(circuit["rx_rate"])),
-            ("syncrate/down", int(circuit["tx_rate"])),
+            ("quota/remaining", quota_remaining),
+            ("quota/remaining/gb", quota_remaining_gb),
+            ("quota/remaining/human", humanfriendly.format_size(quota_remaining)),
+            ("quota/monthly", quota_monthly),
+            ("quota/monthly/gb", quota_monthly_gb),
+            ("quota/monthly/human", humanfriendly.format_size(quota_monthly)),
+            ("syncrate/up", up),
+            ("syncrate/up/mb", up_mb),
+            ("syncrate/up/human", humanfriendly.format_size(up)),
+            ("syncrate/down", down),
+            ("syncrate/down/mb", down_mb),
+            ("syncrate/down/human", humanfriendly.format_size(down)),
             ("postcode", str(circuit["postcode"].strip()))
         ]:
             topic = "%s/%s" % (prefix, metric[0])
             publish(client=client, topic=topic, payload=metric[1])
-            if type(metric[1]) == int:
-                publish(client=client, topic="%s/human" % (topic), payload=humanfriendly.format_size(metric[1]))
     return
 
 def publish(client, topic, payload):

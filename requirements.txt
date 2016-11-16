@@ -1,2 +1,3 @@
-paho-mqtt
-configparser
+paho-mqtt>=1.2
+configparser>=3.5.0
+humanfriendly>=2.1

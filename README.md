@@ -40,9 +40,15 @@ password = LongAccountPassword
 [mqtt]
 broker = 127.0.0.1
 port = 1883
+topic_prefix = aaisp
 username = aaisp-service
 password = AnotherLongPassword
-topic_prefix = aaisp
+```
+
+Install the dependencies:
+
+```
+$ pip install -r requirements.txt
 ```
 
 Run the service:
@@ -56,49 +62,89 @@ $ aaisp-to-mqtt.py /etc/aaisp-mqtt.conf
 Single account:
 
 ```
-aaisp/$accounts                          gb12@a
-aaisp/$lines                             32891
-aaisp/$version                           0.1
-aaisp/account/gb12@a/quota/remaining     3333889
-aaisp/account/gb12@a/quota/monthly       10000000
-aaisp/account/gb12@a/syncrate/down       7800000
-aaisp/account/gb12@a/syncrate/up         1900000
-aaisp/line/32891/quota/remaining         3333889
-aaisp/line/32891/quota/monthly           10000000
-aaisp/line/32891/syncrate/down           7800000
-aaisp/line/32891/syncrate/up             1900000
+aaisp/$lines                                    32891
+aaisp/$logins                                   gb12@a.1
+aaisp/$version                                  0.1
+aaisp/line/32891/postcode                       SA65 9RR
+aaisp/line/32891/quota/monthly                  100000000000
+aaisp/line/32891/quota/monthly/human            100 GB
+aaisp/line/32891/quota/remaining                84667320096
+aaisp/line/32891/quota/remaining/human          84.67 GB
+aaisp/line/32891/syncrate/down                  5181000
+aaisp/line/32891/syncrate/down/human            5.18 MB
+aaisp/line/32891/syncrate/up                    1205000
+aaisp/line/32891/syncrate/up/human              1.21 MB
+aaisp/login/gb12@a.1/postcode                   SA65 9RR
+aaisp/login/gb12@a.1/quota/monthly              100000000000
+aaisp/login/gb12@a.1/quota/monthly/human        100 GB
+aaisp/login/gb12@a.1/quota/remaining            84667320096
+aaisp/login/gb12@a.1/quota/remaining/human      84.67 GB
+aaisp/login/gb12@a.1/syncrate/down              5181000
+aaisp/login/gb12@a.1/syncrate/down/human        5.18 MB
+aaisp/login/gb12@a.1/syncrate/up                1205000
+aaisp/login/gb12@a.1/syncrate/up/human          1.21 MB
 ```
 
 For multiple accounts:
 
 ```
-aaisp/$accounts                          el6@a.1,el6@a.2,gb12@a
-aaisp/$lines                             37835,37964,32891
-aaisp/$version                           0.1
-aaisp/account/gb12@a/quota/remaining     3333889
-aaisp/account/gb12@a/quota/monthly       10000000
-aaisp/account/gb12@a/syncrate/down       7800000
-aaisp/account/gb12@a/syncrate/up         1900000
-aaisp/account/el6@a.1/quota/remaining    3333889
-aaisp/account/el6@a.1/quota/monthly      10000000
-aaisp/account/el6@a.1/syncrate/down      7400000
-aaisp/account/el6@a.1/syncrate/up        1700000
-aaisp/account/el6@a.2/quota/remaining    3333889
-aaisp/account/el6@a.2/quota/monthly      10000000
-aaisp/account/el6@a.2/syncrate/down      7300000
-aaisp/account/el6@a.2/syncrate/up        1600000
-aaisp/line/32891/quota/remaining         3333889
-aaisp/line/32891/quota/monthly           10000000
-aaisp/line/32891/syncrate/down           7800000
-aaisp/line/32891/syncrate/up             1900000
-aaisp/line/37835/quota/remaining         3333889
-aaisp/line/37835/quota/monthly           10000000
-aaisp/line/37835/syncrate/down           7300000
-aaisp/line/37835/syncrate/up             1600000
-aaisp/line/37964/quota/remaining         3333889
-aaisp/line/37964/quota/monthly           10000000
-aaisp/line/37964/syncrate/down           7400000
-aaisp/line/37964/syncrate/up             1700000
+aaisp/$lines                                    32891,37835,37964
+aaisp/$logins                                   gb12@a.1,el6@a.1,el6@a.2
+aaisp/$version                                  0.1
+aaisp/line/32891/postcode                       SA65 9RR
+aaisp/line/32891/quota/monthly                  100000000000
+aaisp/line/32891/quota/monthly/human            100 GB
+aaisp/line/32891/quota/remaining                84667320096
+aaisp/line/32891/quota/remaining/human          84.67 GB
+aaisp/line/32891/syncrate/down                  5181000
+aaisp/line/32891/syncrate/down/human            5.18 MB
+aaisp/line/32891/syncrate/up                    1205000
+aaisp/line/32891/syncrate/up/human              1.21 MB
+aaisp/line/37835/postcode                       SA62 5EY
+aaisp/line/37835/quota/monthly                  1000000000000
+aaisp/line/37835/quota/monthly/human            1 TB
+aaisp/line/37835/quota/remaining                752408843915
+aaisp/line/37835/quota/remaining/human          752.41 GB
+aaisp/line/37835/syncrate/down                  68083000
+aaisp/line/37835/syncrate/down/human            68.08 MB
+aaisp/line/37835/syncrate/up                    19999000
+aaisp/line/37835/syncrate/up/human              20 MB
+aaisp/line/37964/postcode                       SA62 5EY
+aaisp/line/37964/quota/monthly                  1000000000000
+aaisp/line/37964/quota/monthly/human            1 TB
+aaisp/line/37964/quota/remaining                819343151266
+aaisp/line/37964/quota/remaining/human          819.34 GB
+aaisp/line/37964/syncrate/down                  74425000
+aaisp/line/37964/syncrate/down/human            74.42 MB
+aaisp/line/37964/syncrate/up                    19978000
+aaisp/line/37964/syncrate/up/human              19.98 MB
+aaisp/login/el6@a.1/postcode                    SA62 5EY
+aaisp/login/el6@a.1/quota/monthly               1000000000000
+aaisp/login/el6@a.1/quota/monthly/human         1 TB
+aaisp/login/el6@a.1/quota/remaining             752408843915
+aaisp/login/el6@a.1/quota/remaining/human       752.41 GB
+aaisp/login/el6@a.1/syncrate/down               68083000
+aaisp/login/el6@a.1/syncrate/down/human         68.08 MB
+aaisp/login/el6@a.1/syncrate/up                 19999000
+aaisp/login/el6@a.1/syncrate/up/human           20 MB
+aaisp/login/el6@a.2/postcode                    SA62 5EY
+aaisp/login/el6@a.2/quota/monthly               1000000000000
+aaisp/login/el6@a.2/quota/monthly/human         1 TB
+aaisp/login/el6@a.2/quota/remaining             819343151266
+aaisp/login/el6@a.2/quota/remaining/human       819.34 GB
+aaisp/login/el6@a.2/syncrate/down               74425000
+aaisp/login/el6@a.2/syncrate/down/human         74.42 MB
+aaisp/login/el6@a.2/syncrate/up                 19978000
+aaisp/login/el6@a.2/syncrate/up/human           19.98 MB
+aaisp/login/gb12@a.1/postcode                   SA65 9RR
+aaisp/login/gb12@a.1/quota/monthly              100000000000
+aaisp/login/gb12@a.1/quota/monthly/human        100 GB
+aaisp/login/gb12@a.1/quota/remaining            84667320096
+aaisp/login/gb12@a.1/quota/remaining/human      84.67 GB
+aaisp/login/gb12@a.1/syncrate/down              5181000
+aaisp/login/gb12@a.1/syncrate/down/human        5.18 MB
+aaisp/login/gb12@a.1/syncrate/up                1205000
+aaisp/login/gb12@a.1/syncrate/up/human          1.21 MB
 ```
 
 ## Setup ##

@@ -15,6 +15,10 @@ Useful for integrating and displaying AAISP line properties in home automation a
 * Flashing a light in the office when the downstream sync rate drops
 * Sending line info to [Crouton](https://github.com/edfungus/Crouton)
 
+Example showing lines in Home Assistant...
+
+![Screenshot](https://raw.github.com/natm/aaisp-to-mqtt/master/docs/home-assistant-panel.png)
+
 ## Configuration ##
 
 Create a config file, for example in /etc/aaisp-mqtt.conf, minimal viable with no MQTT authentication:

@@ -107,7 +107,9 @@ def publish_per_circuit(client, circuit, mqtt_topic_prefix):
     return
 
 def publish(client, topic, payload):
-    client.publish(topic=topic, payload=payload)
+    result = client.publish(topic=topic, payload=payload)
+    if result[0] != 0:
+        LOG.fail("MQTT publish failure: %s %s" , topic, payload)
 
 if __name__ == "__main__":
     main()

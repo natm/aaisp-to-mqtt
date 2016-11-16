@@ -81,15 +81,6 @@ Single account:
 aaisp/$lines                                    32891
 aaisp/$logins                                   gb12@a.1
 aaisp/$version                                  0.1
-aaisp/line/32891/postcode                       SA65 9RR
-aaisp/line/32891/quota/monthly                  100000000000
-aaisp/line/32891/quota/monthly/human            100 GB
-aaisp/line/32891/quota/remaining                84667320096
-aaisp/line/32891/quota/remaining/human          84.67 GB
-aaisp/line/32891/syncrate/down                  5181000
-aaisp/line/32891/syncrate/down/human            5.18 MB
-aaisp/line/32891/syncrate/up                    1205000
-aaisp/line/32891/syncrate/up/human              1.21 MB
 aaisp/login/gb12@a.1/postcode                   SA65 9RR
 aaisp/login/gb12@a.1/quota/monthly              100000000000
 aaisp/login/gb12@a.1/quota/monthly/human        100 GB
@@ -107,33 +98,6 @@ For multiple accounts:
 aaisp/$lines                                    32891,37835,37964
 aaisp/$logins                                   gb12@a.1,el6@a.1,el6@a.2
 aaisp/$version                                  0.1
-aaisp/line/32891/postcode                       SA65 9RR
-aaisp/line/32891/quota/monthly                  100000000000
-aaisp/line/32891/quota/monthly/human            100 GB
-aaisp/line/32891/quota/remaining                84667320096
-aaisp/line/32891/quota/remaining/human          84.67 GB
-aaisp/line/32891/syncrate/down                  5181000
-aaisp/line/32891/syncrate/down/human            5.18 MB
-aaisp/line/32891/syncrate/up                    1205000
-aaisp/line/32891/syncrate/up/human              1.21 MB
-aaisp/line/37835/postcode                       SA62 5EY
-aaisp/line/37835/quota/monthly                  1000000000000
-aaisp/line/37835/quota/monthly/human            1 TB
-aaisp/line/37835/quota/remaining                752408843915
-aaisp/line/37835/quota/remaining/human          752.41 GB
-aaisp/line/37835/syncrate/down                  68083000
-aaisp/line/37835/syncrate/down/human            68.08 MB
-aaisp/line/37835/syncrate/up                    19999000
-aaisp/line/37835/syncrate/up/human              20 MB
-aaisp/line/37964/postcode                       SA62 5EY
-aaisp/line/37964/quota/monthly                  1000000000000
-aaisp/line/37964/quota/monthly/human            1 TB
-aaisp/line/37964/quota/remaining                819343151266
-aaisp/line/37964/quota/remaining/human          819.34 GB
-aaisp/line/37964/syncrate/down                  74425000
-aaisp/line/37964/syncrate/down/human            74.42 MB
-aaisp/line/37964/syncrate/up                    19978000
-aaisp/line/37964/syncrate/up/human              19.98 MB
 aaisp/login/el6@a.1/postcode                    SA62 5EY
 aaisp/login/el6@a.1/quota/monthly               1000000000000
 aaisp/login/el6@a.1/quota/monthly/human         1 TB

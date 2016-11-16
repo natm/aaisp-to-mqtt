@@ -90,9 +90,9 @@ def main():
     sys.exit(0)
 
 def publish_per_circuit(client, circuit, mqtt_topic_prefix):
-    line_prefix = "%s/line/%s" % (mqtt_topic_prefix, circuit["ID"])
+    # line_prefix = "%s/line/%s" % (mqtt_topic_prefix, circuit["ID"])
     login_prefix = "%s/login/%s" % (mqtt_topic_prefix, circuit["login"])
-    for prefix in [line_prefix, login_prefix]:
+    for prefix in [login_prefix]:  # , line_prefix]:
         for metric in [
             ("quota/remaining", int(circuit["quota_remaining"])),
             ("quota/monthly", int(circuit["quota_monthly"])),

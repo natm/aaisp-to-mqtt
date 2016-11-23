@@ -136,3 +136,16 @@ aaisp/login/gb12@a.1/syncrate/up/human          1.21 MB
 ## Setup ##
 
 TODO
+
+## License ##
+
+MIT
+
+## Contributing guidelines ##
+
+* Fork the repo
+* Create a branch
+* Make your changes
+* Open a pull request back from your branch to master in this repo
+
+Found a bug? open an [issue](https://github.com/natm/aaisp-to-mqtt/issues).

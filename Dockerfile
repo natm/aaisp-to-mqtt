@@ -1,29 +1,21 @@
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Nat Morris <nat@nuqe.net>
 
-RUN apk add --update \
-    python \
-    python-dev \
-    py-pip \
-    build-base \
-  && pip install virtualenv
-
-#ENV LIBRARY_PATH=/lib:/usr/lib
-#RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
-
-# Copy requirements before app so we can cache PIP dependencies on their own
-RUN mkdir /app
-COPY requirements.txt /app/requirements.txt
-WORKDIR /app
-RUN virtualenv /env && /env/bin/pip install -r /app/requirements.txt
-
+COPY requirements.txt /app/
 COPY aaisp-to-mqtt.py /app/
+WORKDIR /app
 
-RUN rm -rf \
-	         /root/.cache \
-	        /tmp/*
-RUN rm -rf /var/cache/apk/*
+RUN apk add --no-cache \
+        python \
+        ca-certificates \
+    && apk add --no-cache --virtual .build-deps \
+        py-pip \
+    && pip install -r requirements.txt \
+    && apk del .build-deps \
+    && addgroup -g 1000 aaisp \
+    && adduser -u 1000 -G aaisp -s /bin/sh -D aaisp \
+    && chown aaisp:aaisp -R /app
 
 EXPOSE 8080/tcp
-
-CMD ["/env/bin/python", "/app/aaisp-to-mqtt.py", "-c /config/config.cfg"]
+USER aaisp
+CMD ["python", "aaisp-to-mqtt.py", "config.cfg"]

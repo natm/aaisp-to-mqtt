@@ -11,11 +11,11 @@ RUN apk add --no-cache \
     && apk add --no-cache --virtual .build-deps \
         py-pip \
     && pip install -r requirements.txt \
-    && apk del .build-deps \
+    && apk del --no-cache .build-deps \
     && addgroup -g 1000 aaisp \
     && adduser -u 1000 -G aaisp -s /bin/sh -D aaisp \
-    && chown aaisp:aaisp -R /app
+    && chown aaisp:aaisp -R /app \
+    && echo "0 * * * * /usr/bin/python /app/aaisp-to-mqtt.py /app/config.cfg" | crontab -u aaisp -
 
 EXPOSE 8080/tcp
-USER aaisp
-CMD ["python", "aaisp-to-mqtt.py", "config.cfg"]
+CMD ["/usr/sbin/crond", "-f", "-d", "8"]

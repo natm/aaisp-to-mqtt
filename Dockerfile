@@ -17,5 +17,4 @@ RUN apk add --no-cache \
     && chown aaisp:aaisp -R /app \
     && echo "0 * * * * /usr/bin/python /app/aaisp-to-mqtt.py /app/config.cfg" | crontab -u aaisp -
 
-EXPOSE 8080/tcp
 CMD ["/usr/sbin/crond", "-f", "-d", "8"]

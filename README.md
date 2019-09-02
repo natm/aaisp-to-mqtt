@@ -133,6 +133,20 @@ aaisp/login/gb12@a.1/syncrate/up                1205000
 aaisp/login/gb12@a.1/syncrate/up/human          1.21 MB
 ```
 
+## Docker ##
+
+Build the Docker image with:
+
+```
+docker build -t aaisp-mqtt .
+```
+
+Run the container with a volume mounted config file:
+
+```
+docker run -d -v <path_to_config>:/app/config.cfg --name AAISPmqtt aaisp-mqtt
+```
+
 ## Setup ##
 
 TODO
